@@ -374,17 +374,46 @@ or
 process.env['BLENO_DEVICE_NAME'] = 'custom device name';
 ```
 
+or 
+
+Define it on an .env file, like so:
+```dosini
+BLENO_DEVICE_NAME="custom device name"
+```
+
 #### Set Advertising Interval
 
-bleno uses a 100 ms advertising interval by default.
+bleno uses a 500 ms advertising interval by default.
 
 A custom advertising interval can be specified by setting the ```BLENO_ADVERTISING_INTERVAL``` enviroment variable with the desired value in milliseconds:
 
 ```sh
-sudo BLENO_ADVERTISING_INTERVAL=500 node <your file>.js
+sudo BLENO_ADVERTISING_INTERVAL=1000 node <your file>.js
 ```
 
-Advertising intervals must be between 20 ms to 10 s (10,000 ms).
+or 
+
+Define it on an .env file, like so:
+```dosini
+BLENO_ADVERTISING_INTERVAL=1000
+```
+
+#### Set Connectable Mode
+
+By default, the device is on **Non connectable** undirected (0x03) mode. If you wish to change this, just set the ```BLENO_CONNECTABLE_MODE``` environment variable to 1 for **Connectable** undirected (0x00), like so:
+
+```sh
+sudo BLENO_CONNECTABLE_MODE=1 node <your file>.js # connectable
+```
+
+or 
+
+Define it on an .env file, like so:
+```dosini
+BLENO_CONNECTABLE_MODE=1 # connectable
+```
+
+Advertising intervals must be between 20 ms to 10 s (10,000 ms). This is validated at statup, if the value is outside the defined ranged, it defaults to 500 ms.
 
 ## Useful tools/links
 
